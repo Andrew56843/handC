@@ -39,3 +39,14 @@ C:\Users\nect1\Desktop\Лаборатория Робототехнические
 C:\Users\nect1\Desktop\Лаборатория Робототехнические системы\HandCSharp\HandCSharp\obj\Debug\HandCSharp.csproj.CopyComplete
 C:\Users\nect1\Desktop\Лаборатория Робототехнические системы\HandCSharp\HandCSharp\obj\Debug\HandCSharp.exe
 C:\Users\nect1\Desktop\Лаборатория Робототехнические системы\HandCSharp\HandCSharp\obj\Debug\HandCSharp.pdb
+C:\Users\nect1\Source\Repos\Andrew56843\handC\HandCSharp\bin\Debug\HandCSharp.exe.config
+C:\Users\nect1\Source\Repos\Andrew56843\handC\HandCSharp\bin\Debug\HandCSharp.exe
+C:\Users\nect1\Source\Repos\Andrew56843\handC\HandCSharp\bin\Debug\HandCSharp.pdb
+C:\Users\nect1\Source\Repos\Andrew56843\handC\HandCSharp\obj\Debug\HandCSharp.csprojAssemblyReference.cache
+C:\Users\nect1\Source\Repos\Andrew56843\handC\HandCSharp\obj\Debug\HandCSharp.Form1.resources
+C:\Users\nect1\Source\Repos\Andrew56843\handC\HandCSharp\obj\Debug\HandCSharp.Properties.Resources.resources
+C:\Users\nect1\Source\Repos\Andrew56843\handC\HandCSharp\obj\Debug\HandCSharp.csproj.GenerateResource.cache
+C:\Users\nect1\Source\Repos\Andrew56843\handC\HandCSharp\obj\Debug\HandCSharp.csproj.CoreCompileInputs.cache
+C:\Users\nect1\Source\Repos\Andrew56843\handC\HandCSharp\obj\Debug\HandCSharp.csproj.CopyComplete
+C:\Users\nect1\Source\Repos\Andrew56843\handC\HandCSharp\obj\Debug\HandCSharp.exe
+C:\Users\nect1\Source\Repos\Andrew56843\handC\HandCSharp\obj\Debug\HandCSharp.pdb
