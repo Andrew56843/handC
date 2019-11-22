@@ -1,0 +1,8 @@
+C:\Users\AndroidRobot\Documents\Visual Studio 2012\Projects\HandCSharp\HandCSharp\bin\Release\HandCSharp.exe.config
+C:\Users\AndroidRobot\Documents\Visual Studio 2012\Projects\HandCSharp\HandCSharp\bin\Release\HandCSharp.exe
+C:\Users\AndroidRobot\Documents\Visual Studio 2012\Projects\HandCSharp\HandCSharp\bin\Release\HandCSharp.pdb
+C:\Users\AndroidRobot\Documents\Visual Studio 2012\Projects\HandCSharp\HandCSharp\obj\Release\HandCSharp.Form1.resources
+C:\Users\AndroidRobot\Documents\Visual Studio 2012\Projects\HandCSharp\HandCSharp\obj\Release\HandCSharp.Properties.Resources.resources
+C:\Users\AndroidRobot\Documents\Visual Studio 2012\Projects\HandCSharp\HandCSharp\obj\Release\HandCSharp.csproj.GenerateResource.Cache
+C:\Users\AndroidRobot\Documents\Visual Studio 2012\Projects\HandCSharp\HandCSharp\obj\Release\HandCSharp.exe
+C:\Users\AndroidRobot\Documents\Visual Studio 2012\Projects\HandCSharp\HandCSharp\obj\Release\HandCSharp.pdb

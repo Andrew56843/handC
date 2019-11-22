@@ -1,0 +1,41 @@
+c:\users\androidrobot\documents\visual studio 2012\Projects\HandCSharp\HandCSharp\bin\Debug\HandCSharp.exe.config
+c:\users\androidrobot\documents\visual studio 2012\Projects\HandCSharp\HandCSharp\bin\Debug\HandCSharp.exe
+c:\users\androidrobot\documents\visual studio 2012\Projects\HandCSharp\HandCSharp\bin\Debug\HandCSharp.pdb
+c:\users\androidrobot\documents\visual studio 2012\Projects\HandCSharp\HandCSharp\obj\Debug\HandCSharp.Form1.resources
+c:\users\androidrobot\documents\visual studio 2012\Projects\HandCSharp\HandCSharp\obj\Debug\HandCSharp.Properties.Resources.resources
+c:\users\androidrobot\documents\visual studio 2012\Projects\HandCSharp\HandCSharp\obj\Debug\HandCSharp.csproj.GenerateResource.Cache
+c:\users\androidrobot\documents\visual studio 2012\Projects\HandCSharp\HandCSharp\obj\Debug\HandCSharp.exe
+c:\users\androidrobot\documents\visual studio 2012\Projects\HandCSharp\HandCSharp\obj\Debug\HandCSharp.pdb
+C:\Users\AndroidRobot\documents\visual studio 2012\Projects\HandCSharp\HandCSharp\obj\Debug\HandCSharp.csprojResolveAssemblyReference.cache
+C:\Users\AndroidRobot\Documents\Visual Studio 2012\Projects\HandCSharp\HandCSharp\bin\Debug\AR600.pdb
+D:\C\docs\Projects\HandCSharp\HandCSharp\bin\Debug\HandCSharp.exe.config
+D:\C\docs\Projects\HandCSharp\HandCSharp\bin\Debug\HandCSharp.exe
+D:\C\docs\Projects\HandCSharp\HandCSharp\bin\Debug\HandCSharp.pdb
+D:\C\docs\Projects\HandCSharp\HandCSharp\bin\Debug\AR600.pdb
+D:\C\docs\Projects\HandCSharp\HandCSharp\obj\Debug\HandCSharp.csprojResolveAssemblyReference.cache
+D:\C\docs\Projects\HandCSharp\HandCSharp\obj\Debug\HandCSharp.Form1.resources
+D:\C\docs\Projects\HandCSharp\HandCSharp\obj\Debug\HandCSharp.Properties.Resources.resources
+D:\C\docs\Projects\HandCSharp\HandCSharp\obj\Debug\HandCSharp.csproj.GenerateResource.Cache
+D:\C\docs\Projects\HandCSharp\HandCSharp\obj\Debug\HandCSharp.exe
+D:\C\docs\Projects\HandCSharp\HandCSharp\obj\Debug\HandCSharp.pdb
+C:\Users\AndroidRobot\Desktop\Лаборатория Робототехнические системы\HandCSharp\HandCSharp\bin\Debug\HandCSharp.exe.config
+C:\Users\AndroidRobot\Desktop\Лаборатория Робототехнические системы\HandCSharp\HandCSharp\bin\Debug\HandCSharp.exe
+C:\Users\AndroidRobot\Desktop\Лаборатория Робототехнические системы\HandCSharp\HandCSharp\bin\Debug\HandCSharp.pdb
+C:\Users\AndroidRobot\Desktop\Лаборатория Робототехнические системы\HandCSharp\HandCSharp\bin\Debug\AR600.pdb
+C:\Users\AndroidRobot\Desktop\Лаборатория Робототехнические системы\HandCSharp\HandCSharp\obj\Debug\HandCSharp.csprojResolveAssemblyReference.cache
+C:\Users\AndroidRobot\Desktop\Лаборатория Робототехнические системы\HandCSharp\HandCSharp\obj\Debug\HandCSharp.Form1.resources
+C:\Users\AndroidRobot\Desktop\Лаборатория Робототехнические системы\HandCSharp\HandCSharp\obj\Debug\HandCSharp.Properties.Resources.resources
+C:\Users\AndroidRobot\Desktop\Лаборатория Робототехнические системы\HandCSharp\HandCSharp\obj\Debug\HandCSharp.csproj.GenerateResource.Cache
+C:\Users\AndroidRobot\Desktop\Лаборатория Робототехнические системы\HandCSharp\HandCSharp\obj\Debug\HandCSharp.exe
+C:\Users\AndroidRobot\Desktop\Лаборатория Робототехнические системы\HandCSharp\HandCSharp\obj\Debug\HandCSharp.pdb
+C:\Users\nect1\Desktop\Лаборатория Робототехнические системы\HandCSharp\HandCSharp\bin\Debug\HandCSharp.exe.config
+C:\Users\nect1\Desktop\Лаборатория Робототехнические системы\HandCSharp\HandCSharp\bin\Debug\HandCSharp.exe
+C:\Users\nect1\Desktop\Лаборатория Робототехнические системы\HandCSharp\HandCSharp\bin\Debug\HandCSharp.pdb
+C:\Users\nect1\Desktop\Лаборатория Робототехнические системы\HandCSharp\HandCSharp\obj\Debug\HandCSharp.csprojAssemblyReference.cache
+C:\Users\nect1\Desktop\Лаборатория Робототехнические системы\HandCSharp\HandCSharp\obj\Debug\HandCSharp.Form1.resources
+C:\Users\nect1\Desktop\Лаборатория Робототехнические системы\HandCSharp\HandCSharp\obj\Debug\HandCSharp.Properties.Resources.resources
+C:\Users\nect1\Desktop\Лаборатория Робототехнические системы\HandCSharp\HandCSharp\obj\Debug\HandCSharp.csproj.GenerateResource.cache
+C:\Users\nect1\Desktop\Лаборатория Робототехнические системы\HandCSharp\HandCSharp\obj\Debug\HandCSharp.csproj.CoreCompileInputs.cache
+C:\Users\nect1\Desktop\Лаборатория Робототехнические системы\HandCSharp\HandCSharp\obj\Debug\HandCSharp.csproj.CopyComplete
+C:\Users\nect1\Desktop\Лаборатория Робототехнические системы\HandCSharp\HandCSharp\obj\Debug\HandCSharp.exe
+C:\Users\nect1\Desktop\Лаборатория Робототехнические системы\HandCSharp\HandCSharp\obj\Debug\HandCSharp.pdb
