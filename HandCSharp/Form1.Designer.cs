@@ -64,19 +64,21 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(278, 25);
+            this.button1.Location = new System.Drawing.Point(556, 48);
+            this.button1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(87, 23);
+            this.button1.Size = new System.Drawing.Size(174, 44);
             this.button1.TabIndex = 0;
-            this.button1.Text = "Пуск";
+            this.button1.Text = "Старт";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(278, 50);
+            this.button2.Location = new System.Drawing.Point(556, 96);
+            this.button2.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(87, 23);
+            this.button2.Size = new System.Drawing.Size(174, 44);
             this.button2.TabIndex = 1;
             this.button2.Text = "Остановка";
             this.button2.UseVisualStyleBackColor = true;
@@ -84,17 +86,19 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(173, 52);
+            this.textBox1.Location = new System.Drawing.Point(346, 100);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(89, 20);
+            this.textBox1.Size = new System.Drawing.Size(174, 31);
             this.textBox1.TabIndex = 2;
             this.textBox1.Text = "0";
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(215, 79);
+            this.textBox2.Location = new System.Drawing.Point(430, 152);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(47, 20);
+            this.textBox2.Size = new System.Drawing.Size(90, 31);
             this.textBox2.TabIndex = 3;
             this.textBox2.Text = "1000";
             // 
@@ -106,41 +110,46 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(45, 119);
+            this.label1.Location = new System.Drawing.Point(90, 229);
+            this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(0, 13);
+            this.label1.Size = new System.Drawing.Size(0, 25);
             this.label1.TabIndex = 7;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(52, 30);
+            this.label3.Location = new System.Drawing.Point(104, 58);
+            this.label3.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(81, 13);
+            this.label3.Size = new System.Drawing.Size(157, 25);
             this.label3.TabIndex = 12;
             this.label3.Text = "Номер мотора";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(52, 55);
+            this.label4.Location = new System.Drawing.Point(104, 106);
+            this.label4.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(108, 13);
+            this.label4.Size = new System.Drawing.Size(209, 25);
             this.label4.TabIndex = 13;
             this.label4.Text = "Угол поворота x100";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(52, 82);
+            this.label5.Location = new System.Drawing.Point(104, 158);
+            this.label5.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(116, 13);
+            this.label5.Size = new System.Drawing.Size(225, 25);
             this.label5.TabIndex = 14;
             this.label5.Text = "Время движения (мс)";
             // 
             // numericUpDown1
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(210, 28);
+            this.numericUpDown1.Location = new System.Drawing.Point(420, 54);
+            this.numericUpDown1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.numericUpDown1.Maximum = new decimal(new int[] {
             25,
             0,
@@ -152,7 +161,7 @@
             0,
             0});
             this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(52, 20);
+            this.numericUpDown1.Size = new System.Drawing.Size(104, 31);
             this.numericUpDown1.TabIndex = 18;
             this.numericUpDown1.Value = new decimal(new int[] {
             16,
@@ -163,9 +172,10 @@
             // 
             // trackBar1
             // 
-            this.trackBar1.Location = new System.Drawing.Point(50, 105);
+            this.trackBar1.Location = new System.Drawing.Point(100, 202);
+            this.trackBar1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.trackBar1.Name = "trackBar1";
-            this.trackBar1.Size = new System.Drawing.Size(315, 45);
+            this.trackBar1.Size = new System.Drawing.Size(630, 90);
             this.trackBar1.TabIndex = 19;
             this.trackBar1.TickStyle = System.Windows.Forms.TickStyle.TopLeft;
             this.trackBar1.Scroll += new System.EventHandler(this.trackBar1_Scroll);
@@ -178,18 +188,21 @@
             this.groupBox1.Controls.Add(this.button6);
             this.groupBox1.Controls.Add(this.button7);
             this.groupBox1.Controls.Add(this.button8);
-            this.groupBox1.Location = new System.Drawing.Point(441, 12);
+            this.groupBox1.Location = new System.Drawing.Point(882, 23);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(218, 162);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.groupBox1.Size = new System.Drawing.Size(436, 312);
             this.groupBox1.TabIndex = 21;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Запрограммированные движения";
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(16, 27);
+            this.button5.Location = new System.Drawing.Point(32, 52);
+            this.button5.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(182, 23);
+            this.button5.Size = new System.Drawing.Size(364, 44);
             this.button5.TabIndex = 8;
             this.button5.Text = "Активировать все двигатели";
             this.button5.UseVisualStyleBackColor = true;
@@ -197,9 +210,10 @@
             // 
             // button9
             // 
-            this.button9.Location = new System.Drawing.Point(104, 56);
+            this.button9.Location = new System.Drawing.Point(208, 108);
+            this.button9.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(94, 23);
+            this.button9.Size = new System.Drawing.Size(188, 44);
             this.button9.TabIndex = 20;
             this.button9.Text = "Остан. все";
             this.button9.UseVisualStyleBackColor = true;
@@ -207,9 +221,10 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(16, 85);
+            this.button3.Location = new System.Drawing.Point(32, 163);
+            this.button3.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(82, 23);
+            this.button3.Size = new System.Drawing.Size(164, 44);
             this.button3.TabIndex = 9;
             this.button3.Text = "Взятие";
             this.button3.UseVisualStyleBackColor = true;
@@ -217,9 +232,10 @@
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(104, 85);
+            this.button6.Location = new System.Drawing.Point(208, 163);
+            this.button6.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(94, 52);
+            this.button6.Size = new System.Drawing.Size(188, 100);
             this.button6.TabIndex = 15;
             this.button6.Text = "Остановка таймера";
             this.button6.UseVisualStyleBackColor = true;
@@ -227,9 +243,10 @@
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(16, 56);
+            this.button7.Location = new System.Drawing.Point(32, 108);
+            this.button7.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(82, 23);
+            this.button7.Size = new System.Drawing.Size(164, 44);
             this.button7.TabIndex = 16;
             this.button7.Text = "Рукопожатие";
             this.button7.UseVisualStyleBackColor = true;
@@ -237,9 +254,10 @@
             // 
             // button8
             // 
-            this.button8.Location = new System.Drawing.Point(16, 114);
+            this.button8.Location = new System.Drawing.Point(32, 219);
+            this.button8.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(82, 23);
+            this.button8.Size = new System.Drawing.Size(164, 44);
             this.button8.TabIndex = 17;
             this.button8.Text = "Прощание";
             this.button8.UseVisualStyleBackColor = true;
@@ -261,9 +279,11 @@
             this.groupBox3.Controls.Add(this.label5);
             this.groupBox3.Controls.Add(this.label4);
             this.groupBox3.Controls.Add(this.label1);
-            this.groupBox3.Location = new System.Drawing.Point(12, 12);
+            this.groupBox3.Location = new System.Drawing.Point(24, 23);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(423, 162);
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.groupBox3.Size = new System.Drawing.Size(846, 312);
             this.groupBox3.TabIndex = 31;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Управление моторами";
@@ -271,9 +291,10 @@
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(278, 81);
+            this.checkBox1.Location = new System.Drawing.Point(556, 156);
+            this.checkBox1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(93, 17);
+            this.checkBox1.Size = new System.Drawing.Size(173, 29);
             this.checkBox1.TabIndex = 23;
             this.checkBox1.Text = "Трассировка";
             this.checkBox1.UseVisualStyleBackColor = true;
@@ -282,27 +303,30 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(197, 137);
+            this.label7.Location = new System.Drawing.Point(394, 263);
+            this.label7.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(13, 13);
+            this.label7.Size = new System.Drawing.Size(24, 25);
             this.label7.TabIndex = 22;
             this.label7.Text = "0";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(361, 119);
+            this.label6.Location = new System.Drawing.Point(722, 229);
+            this.label6.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(13, 13);
+            this.label6.Size = new System.Drawing.Size(24, 25);
             this.label6.TabIndex = 21;
             this.label6.Text = "0";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(20, 119);
+            this.label2.Location = new System.Drawing.Point(40, 229);
+            this.label2.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(13, 13);
+            this.label2.Size = new System.Drawing.Size(24, 25);
             this.label2.TabIndex = 20;
             this.label2.Text = "0";
             // 
@@ -318,12 +342,13 @@
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(670, 266);
+            this.ClientSize = new System.Drawing.Size(1340, 512);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
             this.Name = "Form1";
             this.Text = "RoboStudio";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
