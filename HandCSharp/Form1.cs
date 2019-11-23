@@ -257,9 +257,9 @@ namespace HandCSharp
         }
 
 
-        int hsr = 0;  // 0 - вход, 1 - движение в исходную, 2 - изходная
+        int hsr = 0;  // 0 - вход, 1 - движение в исходную, 2 - изходная       
         void hs2()
-        {
+        {            
             if ((hsr > 3) && (robot.RH_DIST2 < 17300))
                 hsr = 0;
 
@@ -410,23 +410,41 @@ namespace HandCSharp
             if ((Math.Sin(an / 180.0f * Math.PI) > +0.99) && (moving == 2)) { 
                 movst(17, 3000, 200); moving = 1; }
         }
-
+        int frequency = 0;
+        void CheckSensor()
+        {
+            if (frequency > 2)
+            {
+                frequency = 0;               
+                label8.Text = "sensor 0: " + robot.RH_DIST0.ToString();
+                label9.Text = "sensor 1: " + robot.RH_DIST1.ToString();
+                label10.Text = "sensor 2: " + robot.RH_DIST2.ToString();
+                label11.Text = "sensor 3: " + robot.RH_DIST3.ToString();
+                label12.Text = "RH_FZ: " + robot.RH_KEYS[1].ToString();
+            }
+            else
+            {
+                frequency++;
+            }
+        }
         private void timer1_Tick(object sender, EventArgs e)
         {
+            CheckSensor();
             switch (regime)
             {
-                case 1:
+                case 1:                    
                     droping();
                     break;
                 case 2:
+                    
                     hs2();//handshake();
                     break;
-                case 3:
+                case 3:                    
                     goodbye();
-                    break;
-            } 
+                    break;            
+            }            
             return;            
-            int X = (robot.RH_FX - middleX);
+            /*int X = (robot.RH_FX - middleX);
             int Y = (robot.RH_FY - middleY);
             int Z = (robot.RH_FZ - middleZ);
             // if (Y == 0) b = true;
@@ -480,7 +498,7 @@ namespace HandCSharp
                 if (X < 0) speed = 6;
                 if (X > 0) speed = -6;
                 Move(16, speed);
-            }
+            }*/
         }
         int middleX = 64815;
         int middleY = 64700;
@@ -801,6 +819,41 @@ namespace HandCSharp
             button1.Enabled = !trace;
             button2.Enabled = !trace;
             trackBar1.Enabled = trace;
+        }
+
+        private void TextBox4_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TextBox3_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Label10_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Label11_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Label12_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Button4_Click_1(object sender, EventArgs e)
+        {
+            /*int[] time = { 16, 100, 17, 100, 18, 100, 19, 100, 20, 100, 21, 100, 22, 100, 23, 100, 24, 100, 25, 100 };
+            int[] pos = { 16, 4500, 17, 0, 18, 0, 19, 0, 20, 0, 21, 0, 22, 0, 23, 0, 24, 0, 25, 0 };
+            int[] go = { 16, 0, 17, 0, 18, 0, 19, 0, 20, 0, 21, 0, 22, 0, 23, 0, 24, 0, 25, 0 };
+            robot.GROUP_TIME(robot.group_setVal(time));
+            robot.GROUP_TPOS(robot.group_setVal(pos));
+            robot.GROUP_GO(robot.group_setVal(go));*/
         }
 
         private void button9_Click(object sender, EventArgs e)
