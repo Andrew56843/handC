@@ -846,14 +846,101 @@ namespace HandCSharp
 
         }
 
-        private void Button4_Click_1(object sender, EventArgs e)
+        private void groupBox2_Enter(object sender, EventArgs e)
         {
-            /*int[] time = { 16, 100, 17, 100, 18, 100, 19, 100, 20, 100, 21, 100, 22, 100, 23, 100, 24, 100, 25, 100 };
-            int[] pos = { 16, 4500, 17, 0, 18, 0, 19, 0, 20, 0, 21, 0, 22, 0, 23, 0, 24, 0, 25, 0 };
-            int[] go = { 16, 0, 17, 0, 18, 0, 19, 0, 20, 0, 21, 0, 22, 0, 23, 0, 24, 0, 25, 0 };
-            robot.GROUP_TIME(robot.group_setVal(time));
-            robot.GROUP_TPOS(robot.group_setVal(pos));
-            robot.GROUP_GO(robot.group_setVal(go));*/
+
+        }
+
+        private void groupBox5_Move(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void pictureBox4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel1_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (clickInJoy1 == true)
+            {
+                int newPosX = e.X - 10;
+                int newPosY = e.Y - 10;
+                if(newPosX < 0) { newPosX = 0; }
+                if (newPosX > 180) { newPosX = 180; }
+                if (newPosY < 0) { newPosY = 0; }
+                if (newPosY > 180) { newPosY = 180; }
+
+                label19.Text = newPosX.ToString();
+                label20.Text = newPosY.ToString();
+                pictureBox4.Location = new Point(newPosX, newPosY);
+            }
+        }
+        private void panel2_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (clickInJoy2 == true)
+            {
+                int newPosX = e.X - 10;
+                int newPosY = e.Y - 10;
+                if (newPosX < 0) { newPosX = 0; }
+                if (newPosX > 180) { newPosX = 180; }
+                if (newPosY < 0) { newPosY = 0; }
+                if (newPosY > 180) { newPosY = 180; }
+                label21.Text = newPosX.ToString();
+                label22.Text = newPosY.ToString();
+                pictureBox1.Location = new Point(newPosX, newPosY);
+            }
+        }
+
+
+        bool clickInJoy1 = false;
+        bool clickInJoy2 = false;
+        private void panel1_MouseClick(object sender, MouseEventArgs e)
+        {
+            
+        }
+
+        private void panel1_MouseDown(object sender, MouseEventArgs e)
+        {
+            clickInJoy1 = !clickInJoy1;
+        }
+        private void panel2_MouseDown(object sender, MouseEventArgs e)
+        {
+            clickInJoy2 = !clickInJoy2;
+        }
+
+        private void Form1_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (clickInJoy2 == true) { clickInJoy2 = !clickInJoy2; }
+            if (clickInJoy1 == true) { clickInJoy1 = !clickInJoy1; }
+        }
+
+        private void panel1_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (clickInJoy2 == true) { clickInJoy2 = !clickInJoy2; }
+            if (clickInJoy1 == true) { clickInJoy1 = !clickInJoy1; }
+        }
+
+        private void label19_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label22_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel2_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (clickInJoy2 == true) { clickInJoy2 = !clickInJoy2; }
+            if (clickInJoy1 == true) { clickInJoy1 = !clickInJoy1; }
+        }
+
+        private void panel2_MouseClick(object sender, MouseEventArgs e)
+        {
+
         }
 
         private void button9_Click(object sender, EventArgs e)
