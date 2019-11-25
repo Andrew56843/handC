@@ -83,8 +83,6 @@
             this.pictureBox4 = new System.Windows.Forms.PictureBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.groupBox8 = new System.Windows.Forms.GroupBox();
-            this.groupBox9 = new System.Windows.Forms.GroupBox();
             this.label20 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
@@ -92,6 +90,8 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label21 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
+            this.trackBar8 = new System.Windows.Forms.TrackBar();
+            this.label23 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -109,6 +109,7 @@
             this.groupBox4.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar8)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -530,7 +531,7 @@
             this.groupBox2.Controls.Add(this.label14);
             this.groupBox2.Controls.Add(this.trackBar6);
             this.groupBox2.Controls.Add(this.trackBar7);
-            this.groupBox2.Location = new System.Drawing.Point(516, 177);
+            this.groupBox2.Location = new System.Drawing.Point(562, 203);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(274, 327);
             this.groupBox2.TabIndex = 53;
@@ -589,13 +590,11 @@
             // groupBox5
             // 
             this.groupBox5.Controls.Add(this.panel1);
-            this.groupBox5.Controls.Add(this.groupBox8);
-            this.groupBox5.Controls.Add(this.groupBox9);
-            this.groupBox5.Location = new System.Drawing.Point(271, 286);
+            this.groupBox5.Location = new System.Drawing.Point(290, 286);
             this.groupBox5.Margin = new System.Windows.Forms.Padding(0);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Padding = new System.Windows.Forms.Padding(0);
-            this.groupBox5.Size = new System.Drawing.Size(202, 209);
+            this.groupBox5.Size = new System.Drawing.Size(222, 229);
             this.groupBox5.TabIndex = 60;
             this.groupBox5.TabStop = false;
             // 
@@ -604,37 +603,17 @@
             this.panel1.Controls.Add(this.pictureBox4);
             this.panel1.Location = new System.Drawing.Point(1, 7);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(200, 200);
+            this.panel1.Size = new System.Drawing.Size(220, 220);
             this.panel1.TabIndex = 63;
             this.panel1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseClick);
             this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
             this.panel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseMove);
             this.panel1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseUp);
             // 
-            // groupBox8
-            // 
-            this.groupBox8.Location = new System.Drawing.Point(0, 0);
-            this.groupBox8.Margin = new System.Windows.Forms.Padding(0);
-            this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Padding = new System.Windows.Forms.Padding(0);
-            this.groupBox8.Size = new System.Drawing.Size(202, 209);
-            this.groupBox8.TabIndex = 60;
-            this.groupBox8.TabStop = false;
-            // 
-            // groupBox9
-            // 
-            this.groupBox9.Location = new System.Drawing.Point(-213, 7);
-            this.groupBox9.Margin = new System.Windows.Forms.Padding(0);
-            this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Padding = new System.Windows.Forms.Padding(0);
-            this.groupBox9.Size = new System.Drawing.Size(202, 209);
-            this.groupBox9.TabIndex = 65;
-            this.groupBox9.TabStop = false;
-            // 
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(475, 293);
+            this.label20.Location = new System.Drawing.Point(516, 293);
             this.label20.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(41, 13);
@@ -644,7 +623,7 @@
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(11, 496);
+            this.label22.Location = new System.Drawing.Point(11, 516);
             this.label22.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(41, 13);
@@ -659,7 +638,7 @@
             this.groupBox4.Margin = new System.Windows.Forms.Padding(0);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Padding = new System.Windows.Forms.Padding(0);
-            this.groupBox4.Size = new System.Drawing.Size(202, 209);
+            this.groupBox4.Size = new System.Drawing.Size(222, 229);
             this.groupBox4.TabIndex = 65;
             this.groupBox4.TabStop = false;
             // 
@@ -668,7 +647,7 @@
             this.panel2.Controls.Add(this.pictureBox1);
             this.panel2.Location = new System.Drawing.Point(1, 7);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(200, 200);
+            this.panel2.Size = new System.Drawing.Size(220, 220);
             this.panel2.TabIndex = 63;
             this.panel2.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panel2_MouseClick);
             this.panel2.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel2_MouseDown);
@@ -685,11 +664,12 @@
             this.pictureBox1.Size = new System.Drawing.Size(20, 20);
             this.pictureBox1.TabIndex = 61;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(218, 293);
+            this.label21.Location = new System.Drawing.Point(238, 293);
             this.label21.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(41, 13);
@@ -699,7 +679,7 @@
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(269, 495);
+            this.label19.Location = new System.Drawing.Point(288, 516);
             this.label19.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(41, 13);
@@ -707,11 +687,29 @@
             this.label19.Text = "label19";
             this.label19.Click += new System.EventHandler(this.label19_Click);
             // 
+            // trackBar8
+            // 
+            this.trackBar8.Location = new System.Drawing.Point(336, 222);
+            this.trackBar8.Name = "trackBar8";
+            this.trackBar8.Size = new System.Drawing.Size(202, 45);
+            this.trackBar8.TabIndex = 53;
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(298, 222);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(37, 13);
+            this.label23.TabIndex = 53;
+            this.label23.Text = "Кисть";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(791, 520);
+            this.ClientSize = new System.Drawing.Size(840, 538);
+            this.Controls.Add(this.label23);
+            this.Controls.Add(this.trackBar8);
             this.Controls.Add(this.label21);
             this.Controls.Add(this.label22);
             this.Controls.Add(this.groupBox4);
@@ -751,6 +749,7 @@
             this.groupBox4.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar8)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -812,14 +811,14 @@
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.GroupBox groupBox8;
-        private System.Windows.Forms.GroupBox groupBox9;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.TrackBar trackBar8;
+        private System.Windows.Forms.Label label23;
     }
 }
 

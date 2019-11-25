@@ -33,6 +33,10 @@ namespace HandCSharp
 
         public Form1()
         {
+            for (int i = 16; i <= 25; i++)
+            {
+                finalAimEngines[i] = -100000;
+            }
             InitializeComponent();
         }
 
@@ -441,7 +445,10 @@ namespace HandCSharp
                     break;
                 case 3:                    
                     goodbye();
-                    break;            
+                    break;
+                case 4:
+                    TimerEngine();
+                    break;
             }            
             return;            
             /*int X = (robot.RH_FX - middleX);
@@ -861,6 +868,80 @@ namespace HandCSharp
 
         }
 
+
+
+       
+        int[] finalAimEngines;//num engines = andValue
+        int[] finalTimeEngines;//num engines = andValue
+
+        private void MainEngine(int[] idEngines, int[] posEngines)//над доделать сдеся - ид двигателя и позиция
+        {
+            for (int i = 0; i < idEngines.Length; i++)
+            {
+                finalAimEngines[idEngines[i]] = posEngines[i];
+                
+                    //finalTimeEngines[idEngines[i] =
+                int itog = 0;
+                if (robot.GET_MOT_POS(idEngines[i]) > finalAimEngines[idEngines[i]])
+                {
+                    itog = robot.GET_MOT_POS(idEngines[i]) - finalAimEngines[idEngines[i]];
+                }
+                else
+                {
+                    itog = finalAimEngines[idEngines[i]] - robot.GET_MOT_POS(idEngines[i]);
+                }
+                finalTimeEngines[idEngines[i]] = itog / 3;                
+            }
+            regime = 4;
+            //сдесь задаётся новые положения для новых двигателей
+        }
+        private void TimerEngine()
+        {
+            //сдесь таймер двигателей
+            int[] position = { };
+            int[] goengine = { };
+            int[] timetoend = { };
+
+            for (int i = 16; i <= 25; i++)
+            {
+                if(finalAimEngines[i] != -100000)
+                {
+                    if (Math.Abs(robot.GET_MOT_POS(i)) - Math.Abs(finalAimEngines[i]) < 100)
+                    {
+                        finalTimeEngines[i] = 0;
+                        finalAimEngines[i] = -100000;
+                        continue;
+                    }
+
+                    position[i] = finalAimEngines[i];
+                    goengine[i] = 0;
+                    finalTimeEngines[i] -= 100;
+                    int itog = 0;
+                    if (robot.GET_MOT_POS(i) > position[i]) {
+                        itog = robot.GET_MOT_POS(i) - position[i];
+                    }
+                    else
+                    {
+                        itog = position[i] - robot.GET_MOT_POS(i);
+                    }
+                    //itog - оставшееся единицы
+                    if(itog < 2000)
+                    {
+                        finalTimeEngines[i] += 150;
+                    }                    
+                    //его над двигать
+                }
+            }
+            //int[] time = { 21, 100, 22, 100, 23, 100, 24, 100, 25, 100 };
+            //int[] pos = { 21, 7500, 22, 7500, 23, 7500, 24, 7500, 25, 7500 };
+            //int[] go = { 21, 0, 22, 0, 23, 0, 24, 0, 25, 0 };
+            robot.GROUP_TIME(robot.group_setVal(finalTimeEngines));
+            robot.GROUP_TPOS(robot.group_setVal(position));
+            robot.GROUP_GO(robot.group_setVal(goengine));
+
+        }
+
+
         private void panel1_MouseMove(object sender, MouseEventArgs e)
         {
             if (clickInJoy1 == true)
@@ -868,9 +949,9 @@ namespace HandCSharp
                 int newPosX = e.X - 10;
                 int newPosY = e.Y - 10;
                 if(newPosX < 0) { newPosX = 0; }
-                if (newPosX > 180) { newPosX = 180; }
+                if (newPosX > 200) { newPosX = 200; }
                 if (newPosY < 0) { newPosY = 0; }
-                if (newPosY > 180) { newPosY = 180; }
+                if (newPosY > 200) { newPosY = 200; }
 
                 label19.Text = newPosX.ToString();
                 label20.Text = newPosY.ToString();
@@ -884,9 +965,9 @@ namespace HandCSharp
                 int newPosX = e.X - 10;
                 int newPosY = e.Y - 10;
                 if (newPosX < 0) { newPosX = 0; }
-                if (newPosX > 180) { newPosX = 180; }
+                if (newPosX > 200) { newPosX = 200; }
                 if (newPosY < 0) { newPosY = 0; }
-                if (newPosY > 180) { newPosY = 180; }
+                if (newPosY > 200) { newPosY = 200; }
                 label21.Text = newPosX.ToString();
                 label22.Text = newPosY.ToString();
                 pictureBox1.Location = new Point(newPosX, newPosY);
@@ -939,6 +1020,11 @@ namespace HandCSharp
         }
 
         private void panel2_MouseClick(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
         {
 
         }
