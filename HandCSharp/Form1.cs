@@ -31,11 +31,15 @@ namespace HandCSharp
         bool trace = false;
 
 
+        int[] finalAimEngines = new int[30];//num engines = andValue
+        int[] finalTimeEngines = new int[30];//num engines = andValue
+
         public Form1()
         {
             for (int i = 16; i <= 25; i++)
             {
                 finalAimEngines[i] = -100000;
+                finalTimeEngines[i] = 0;
             }
             InitializeComponent();
         }
@@ -871,17 +875,27 @@ namespace HandCSharp
 
 
        
-        int[] finalAimEngines;//num engines = andValue
-        int[] finalTimeEngines;//num engines = andValue
+        
 
         private void MainEngine(int[] idEngines, int[] posEngines)//над доделать сдеся - ид двигателя и позиция
         {
             for (int i = 0; i < idEngines.Length; i++)
-            {
+            {               
+
+                //finalTimeEngines[idEngines[i] =
+                int itogLast = 0;//прошлое расстояние до цели
+                if (robot.GET_MOT_POS(idEngines[i]) > finalAimEngines[idEngines[i]])
+                {
+                    itogLast = robot.GET_MOT_POS(idEngines[i]) - finalAimEngines[idEngines[i]];
+                }
+                else
+                {
+                    itogLast = finalAimEngines[idEngines[i]] - robot.GET_MOT_POS(idEngines[i]);
+                }
+
+
                 finalAimEngines[idEngines[i]] = posEngines[i];
-                
-                    //finalTimeEngines[idEngines[i] =
-                int itog = 0;
+                int itog = 0;//новое расстояние до цели
                 if (robot.GET_MOT_POS(idEngines[i]) > finalAimEngines[idEngines[i]])
                 {
                     itog = robot.GET_MOT_POS(idEngines[i]) - finalAimEngines[idEngines[i]];
@@ -890,7 +904,16 @@ namespace HandCSharp
                 {
                     itog = finalAimEngines[idEngines[i]] - robot.GET_MOT_POS(idEngines[i]);
                 }
-                finalTimeEngines[idEngines[i]] = itog / 3;                
+                if (finalTimeEngines[idEngines[i]] > 0)
+                {
+                    int timePerem = itogLast / finalTimeEngines[idEngines[i]];//узнаём отношение прошлого расстояния разделённое на время
+                    int distBoth = Math.Abs(itogLast - itog);//новое расстояние
+                    finalTimeEngines[idEngines[i]] = distBoth * timePerem;//расстояние умноженное на отношение
+                }
+                else
+                {
+                    finalTimeEngines[idEngines[i]] = itog / 3;
+                }
             }
             regime = 4;
             //сдесь задаётся новые положения для новых двигателей
@@ -906,7 +929,8 @@ namespace HandCSharp
             {
                 if(finalAimEngines[i] != -100000)
                 {
-                    if (Math.Abs(robot.GET_MOT_POS(i)) - Math.Abs(finalAimEngines[i]) < 100)
+                    if (Math.Abs(robot.GET_MOT_POS(i)) - Math.Abs(finalAimEngines[i]) < 100 ||
+                        robot.GET_MOT_POS(i)+100 > robot.GET_MOT_MAXPOS(i) || robot.GET_MOT_POS(i) - 100 < robot.GET_MOT_MINPOS(i))
                     {
                         finalTimeEngines[i] = 0;
                         finalAimEngines[i] = -100000;
@@ -927,18 +951,19 @@ namespace HandCSharp
                     //itog - оставшееся единицы
                     if(itog < 2000)
                     {
-                        finalTimeEngines[i] += 150;
-                    }                    
+                        finalTimeEngines[i] += 100;
+                        if(finalTimeEngines[i] > itog / 3) { finalTimeEngines[i] = itog / 3; }
+                    }
+                    timetoend[i] = finalTimeEngines[i];
                     //его над двигать
                 }
             }
             //int[] time = { 21, 100, 22, 100, 23, 100, 24, 100, 25, 100 };
             //int[] pos = { 21, 7500, 22, 7500, 23, 7500, 24, 7500, 25, 7500 };
             //int[] go = { 21, 0, 22, 0, 23, 0, 24, 0, 25, 0 };
-            robot.GROUP_TIME(robot.group_setVal(finalTimeEngines));
+            robot.GROUP_TIME(robot.group_setVal(timetoend));
             robot.GROUP_TPOS(robot.group_setVal(position));
             robot.GROUP_GO(robot.group_setVal(goengine));
-
         }
 
 
@@ -956,6 +981,9 @@ namespace HandCSharp
                 label19.Text = newPosX.ToString();
                 label20.Text = newPosY.ToString();
                 pictureBox4.Location = new Point(newPosX, newPosY);
+
+
+                //изменение позиции
             }
         }
         private void panel2_MouseMove(object sender, MouseEventArgs e)
@@ -964,13 +992,32 @@ namespace HandCSharp
             {
                 int newPosX = e.X - 10;
                 int newPosY = e.Y - 10;
-                if (newPosX < 0) { newPosX = 0; }
+                if (newPosX < 1) { newPosX = 1; }
                 if (newPosX > 200) { newPosX = 200; }
-                if (newPosY < 0) { newPosY = 0; }
+                if (newPosY < 1) { newPosY = 1; }
                 if (newPosY > 200) { newPosY = 200; }
                 label21.Text = newPosX.ToString();
                 label22.Text = newPosY.ToString();
                 pictureBox1.Location = new Point(newPosX, newPosY);
+
+
+
+                //изменние позиции
+                int[] idEngineser = new int[2];
+                idEngineser[0] = 18;//Поворот плеча (влево, вправо) //newPosX -1000 - 8500 (9500 ход)
+                idEngineser[1] = 19;//Поворот плеча (вперед, назад) //newPosY -2000 - 7500 (9500 ход)
+
+
+
+                int[] posEngineser = new int[2];
+
+                posEngineser[0] = (9500 * newPosX) / 200;//ход
+                posEngineser[1] = (9500 * newPosY) / 200;//градус типо
+
+                posEngineser[0] -= 1000;
+                posEngineser[1] -= 2000;
+
+                MainEngine(idEngineser, posEngineser);
             }
         }
 
