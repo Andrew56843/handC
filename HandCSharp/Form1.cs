@@ -32,6 +32,7 @@ namespace HandCSharp
         bool trace = false;
 
 
+        int[] positionEngines = new int[30];//num engines = andValue
         int[] finalAimEngines = new int[30];//num engines = andValue
         int[] finalTimeEngines = new int[30];//num engines = andValue
         int[] startEngines = new int[30];//num engines = andValue
@@ -41,6 +42,7 @@ namespace HandCSharp
         {
             for (int i = 16; i <= 25; i++)
             {
+                positionEngines[i] = 0;
                 finalAimEngines[i] = -100000;
                 finalTimeEngines[i] = 0;
                 startEngines[i] = 0;
@@ -452,8 +454,8 @@ namespace HandCSharp
         }
         private void CheckFactEnginePos()
         {
-            int factpos1 = robot.GET_MOT_POS(18);
-            int factpos2 = robot.GET_MOT_POS(19);
+            int factpos1 = positionEngines[18];
+            int factpos2 = positionEngines[19];
             factpos1 += 1000;//до нуля доводим типо от нуля
             factpos2 += 2000;
 
@@ -461,8 +463,8 @@ namespace HandCSharp
             int posKvY = (factpos2 * 200) / 9500+5;//градус типо
             pictureBox2.Location = new Point(posKvX, posKvY);  
 
-            factpos1 = robot.GET_MOT_POS(16);
-            factpos2 = robot.GET_MOT_POS(17);
+            factpos1 = positionEngines[16];
+            factpos2 = positionEngines[17];
             factpos1 += 0;//до нуля доводим типо от нуля
             factpos2 += 4000;
 
@@ -951,8 +953,12 @@ namespace HandCSharp
             int[] goengine = new int[20];
             for (int i = 16; i <= 25; i++)
             {
+                
                 if (finalAimEngines[i] != -100000)
                 {
+                    positionEngines[i] = robot.GET_MOT_POS(i);//position engines now
+                    //Thread.Sleep(5);
+
                     /*if (Math.Abs(robot.GET_MOT_POS(i)) - Math.Abs(finalAimEngines[i]) < 100 ||//типо ограничитель чтоб моторы не пошли за диапозон
                         robot.GET_MOT_POS(i)+100 > robot.GET_MOT_MAXPOS(i) || robot.GET_MOT_POS(i) - 100 < robot.GET_MOT_MINPOS(i))
                     {
@@ -963,72 +969,101 @@ namespace HandCSharp
                     int finalPos = 0;
                     finalPos = finalAimEngines[i];
                     int itog = 0;
-                    if (robot.GET_MOT_POS(i) > finalPos)
+                    if (positionEngines[i] > finalPos)
                     {
-                        itog = robot.GET_MOT_POS(i) - finalPos;
+                        itog = positionEngines[i] - finalPos;
                     }
                     else
                     {
-                        itog = finalPos - robot.GET_MOT_POS(i);//расстояние
+                        itog = finalPos - positionEngines[i];//расстояние
                     }
                     //itog - оставшееся единицы  расстояния    
 
                     /*******************Механника движения по скорости*************************/
-                    if (itog > 1500)
+                    if (itog > 3000)
                     {
-                        finalTimeEngines[i] += 70;//скорость
+                        finalTimeEngines[i] += 75;//скорость
                     }
-                    else if (itog <= 1500 && itog > 500)
+                    else if (itog <= 3000 && itog > 2000)
                     {
-                        if(finalTimeEngines[i] < 300 && itog > 750) { finalTimeEngines[i] += 30; }
-                        finalTimeEngines[i] -= 30;
+                        if (finalTimeEngines[i] < 450) {finalTimeEngines[i] += 60;}//удерживаем скорость 450
+                        else{finalTimeEngines[i] -= 50;}                        
+                        //if (finalTimeEngines[i] < 200) {finalTimeEngines[i] += 40;}
                     }
-                    else if (itog <= 500 && itog > 50)
+                    else if (itog <= 2000 && itog > 1000)
                     {
-                        if (finalTimeEngines[i] < 150 && itog > 200) { finalTimeEngines[i] += 20; }
-                        finalTimeEngines[i] -= 30;                        
+                        if (finalTimeEngines[i] < 400) { finalTimeEngines[i] += 50;}//удерживаем скорость 400
+                        else{finalTimeEngines[i] -= 40;}
+                        
+                        //if (finalTimeEngines[i] < 100) { finalTimeEngines[i] += 20; }
+                    }                    
+                    else if (itog <= 1000 && itog > 200)
+                    {
+                        if (finalTimeEngines[i] < 300) { finalTimeEngines[i] += 30; }//удерживаем скорость 300
+                        else { finalTimeEngines[i] -= 30; }
                     }
                     else
                     {
-                        finalTimeEngines[i] = 80;
+                        finalTimeEngines[i] = 100;
                     }
-                    if (itog <= 60)
+                    if (finalTimeEngines[i] < 50) { finalTimeEngines[i] = 50; }
+                    //if (itog < finalTimeEngines[i]) { finalTimeEngines[i] = itog - 10; }
+                    if (finalTimeEngines[i] >= 1000)
                     {
-                        finalTimeEngines[i] = 0;
-                        finalAimEngines[i] = -100000;
-                        //StopThisEngine(i);
-                        continue;
-                    }
-                    if (finalTimeEngines[i] < 120) { finalTimeEngines[i] = 120; }
-                    if (itog < finalTimeEngines[i]) { finalTimeEngines[i] = itog - 10; }
-                    if (finalTimeEngines[i] >= 800)
-                    {
-                        finalTimeEngines[i] = 800;
-
+                        finalTimeEngines[i] = 1000;
                     }
                     /**************************************************************************/
 
                     int finalfinal = 0;
 
-                    int var1 = robot.GET_MOT_POS(i) - finalTimeEngines[i];//от позиции руки минусуем шаг
-                    int var2 = robot.GET_MOT_POS(i) + finalTimeEngines[i];//от позиции руки плюсуем шаг
+                    int var1 = positionEngines[i] - finalTimeEngines[i];//от позиции руки минусуем шаг
+                    int var2 = positionEngines[i] + finalTimeEngines[i];//от позиции руки плюсуем шаг
 
                     //какой из них ближе к точке $var1 или $var2
                     if (Math.Abs(var1 - finalPos) < Math.Abs(var2 - finalPos))
                     {
                         finalfinal = var1;
+                        //минус
+                        /*if (finalfinal - 30 < robot.GET_MOT_MINPOS(i))
+                        {
+                            finalTimeEngines[i] = 0;
+                            finalAimEngines[i] = -100000;
+                            continue;
+                        }*/
                     }
-                    else { finalfinal = var2; }
+                    else {
+                        finalfinal = var2;
+                        //плюс
+                        /*if (finalfinal + 30 > robot.GET_MOT_MAXPOS(i))
+                        {
+                            finalTimeEngines[i] = 0;
+                            finalAimEngines[i] = -100000;
+                            continue;
+                        }*/
+                    }
+
+
+                    if (itog <= 50)
+                    {
+                        finalTimeEngines[i] = 0;
+                        finalfinal = finalAimEngines[i];
+                        finalAimEngines[i] = -100000;
+                        //StopThisEngine(i);
+                        continue;
+                    }
+                    
+
 
                     if (i == 19 && finalfinal < 0) { finalfinal = 0; }//система защиты (инцидент со столом)
                     if (i == 18)//логи для отслеживания
                     {
-                        label12.Text = "18 motor " + finalfinal.ToString() + " dist" + itog;
+                        label12.Text = "18 motor " + finalTimeEngines[i].ToString() + " dist" + itog;
                     }
                     if (i == 19)//логи для отслеживания
                     {
-                        label24.Text = "19 motor " + finalfinal.ToString() + " dist" + itog;
+                        label24.Text = "19 motor " + finalTimeEngines[i].ToString() + " dist" + itog;
                     }
+
                     goengine[xod] = i;  
                     goengine[xod + 1] = finalfinal;
                     xod += 2;
@@ -1042,7 +1077,8 @@ namespace HandCSharp
 
         private void StopThisEngine(int engineid)
         {
-            movstop(engineid);
+            //movstop(engineid);
+            robot.MOT_CMD(engineid, 5);
         }        
 
         private void panel1_MouseMove(object sender, MouseEventArgs e)
@@ -1133,8 +1169,7 @@ namespace HandCSharp
 
         private void Form1_MouseUp(object sender, MouseEventArgs e)
         {
-            if (clickInJoy2 == true) { clickInJoy2 = !clickInJoy2; }
-            if (clickInJoy1 == true) { clickInJoy1 = !clickInJoy1; }
+
         }
 
         private void panel1_MouseUp(object sender, MouseEventArgs e)
@@ -1202,7 +1237,6 @@ namespace HandCSharp
             robot.MOT_PTB(19, 3000);
 
         }
-        int timerin = 0;
         private void Label26_Click(object sender, EventArgs e)
         {
 
@@ -1210,8 +1244,13 @@ namespace HandCSharp
 
         private void TrackBar8_Scroll(object sender, EventArgs e)
         {
-            robot.MOT_CMD(18, 3);
-            robot.MOT_CMD(19, 3);
+            //robot.MOT_CMD(18, 3);
+            //robot.MOT_CMD(19, 3);  
+            int[] idEngineser = new int[1];
+            idEngineser[0] = 20;//Поворот кисти
+            int[] posEngineser = new int[1];
+            posEngineser[0] = trackBar8.Value;//ход            
+            MainEngine(idEngineser, posEngineser);
         }
 
         private void Button11_Click(object sender, EventArgs e)
@@ -1227,6 +1266,88 @@ namespace HandCSharp
         private void PictureBox2_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void PictureBox3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void TrackBar3_Scroll(object sender, EventArgs e)
+        {
+            int[] idEngineser = new int[1];
+            idEngineser[0] = 21;//Большой палец
+            int[] posEngineser = new int[1];
+            posEngineser[0] = trackBar3.Value;//ход            
+            MainEngine(idEngineser, posEngineser);
+        }
+
+        private void TrackBar4_Scroll(object sender, EventArgs e)
+        {
+            int[] idEngineser = new int[1];
+            idEngineser[0] = 22;//Указательный палец
+            int[] posEngineser = new int[1];
+            posEngineser[0] = trackBar4.Value;//ход            
+            MainEngine(idEngineser, posEngineser);
+        }
+
+        private void TrackBar5_Scroll(object sender, EventArgs e)
+        {
+            int[] idEngineser = new int[1];
+            idEngineser[0] = 23;//Средний
+            int[] posEngineser = new int[1];
+            posEngineser[0] = trackBar5.Value;//ход            
+            MainEngine(idEngineser, posEngineser);
+        }
+
+        private void TrackBar6_Scroll(object sender, EventArgs e)
+        {
+            int[] idEngineser = new int[1];
+            idEngineser[0] = 24;//Безымянный
+            int[] posEngineser = new int[1];
+            posEngineser[0] = trackBar6.Value;//ход            
+            MainEngine(idEngineser, posEngineser);
+        }
+
+        private void TrackBar7_Scroll(object sender, EventArgs e)
+        {
+            int[] idEngineser = new int[1];
+            idEngineser[0] = 25;//Мизинец
+            int[] posEngineser = new int[1];
+            posEngineser[0] = trackBar7.Value;//ход            
+            MainEngine(idEngineser, posEngineser);
+        }
+
+        private void TrackBar2_Scroll(object sender, EventArgs e)
+        {
+            //trackBar2.Value - положение всех пальцев в %
+            int posproc = trackBar2.Value;
+
+            int[] idEngineser = new int[5];//локоть и предплечье
+            idEngineser[0] = 21;//newPosX -1000 - 8500 (9500 ход)
+            idEngineser[1] = 22;//newPosY -2000 - 7500 (9500 ход)
+            idEngineser[2] = 23;//newPosY -2000 - 7500 (9500 ход)
+            idEngineser[3] = 24;//newPosY -2000 - 7500 (9500 ход)
+            idEngineser[4] = 25;//newPosY -2000 - 7500 (9500 ход)
+
+            int[] posEngineser = new int[5];
+            posEngineser[0] = (7100 * posproc) / 100;
+            posEngineser[1] = (8300 * posproc) / 100;
+            posEngineser[2] = (8500 * posproc) / 100;
+            posEngineser[3] = (8500 * posproc) / 100;
+            posEngineser[4] = (7900 * posproc) / 100;
+
+            posEngineser[0] -= 100;
+            posEngineser[1] -= 100;
+            posEngineser[2] -= 100;
+            posEngineser[3] -= 100;
+            posEngineser[4] -= 100;
+            MainEngine(idEngineser, posEngineser);
         }
 
         private void button9_Click(object sender, EventArgs e)

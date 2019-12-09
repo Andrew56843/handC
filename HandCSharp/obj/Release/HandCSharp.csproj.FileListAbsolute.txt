@@ -6,3 +6,10 @@ C:\Users\AndroidRobot\Documents\Visual Studio 2012\Projects\HandCSharp\HandCShar
 C:\Users\AndroidRobot\Documents\Visual Studio 2012\Projects\HandCSharp\HandCSharp\obj\Release\HandCSharp.csproj.GenerateResource.Cache
 C:\Users\AndroidRobot\Documents\Visual Studio 2012\Projects\HandCSharp\HandCSharp\obj\Release\HandCSharp.exe
 C:\Users\AndroidRobot\Documents\Visual Studio 2012\Projects\HandCSharp\HandCSharp\obj\Release\HandCSharp.pdb
+C:\Users\nect1\Source\Repos\Andrew56843\handC\HandCSharp\obj\Release\HandCSharp.csprojAssemblyReference.cache
+C:\Users\nect1\Source\Repos\Andrew56843\handC\HandCSharp\obj\Release\HandCSharp.Form1.resources
+C:\Users\nect1\Source\Repos\Andrew56843\handC\HandCSharp\obj\Release\HandCSharp.Properties.Resources.resources
+C:\Users\nect1\Source\Repos\Andrew56843\handC\HandCSharp\obj\Release\HandCSharp.csproj.GenerateResource.cache
+C:\Users\nect1\Source\Repos\Andrew56843\handC\HandCSharp\obj\Release\HandCSharp.csproj.CoreCompileInputs.cache
+C:\Users\nect1\Source\Repos\Andrew56843\handC\HandCSharp\obj\Release\HandCSharp.exe
+C:\Users\nect1\Source\Repos\Andrew56843\handC\HandCSharp\obj\Release\HandCSharp.pdb
