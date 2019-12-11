@@ -804,6 +804,7 @@
             this.trackBar8.Size = new System.Drawing.Size(404, 90);
             this.trackBar8.SmallChange = 50;
             this.trackBar8.TabIndex = 53;
+            this.trackBar8.Value = 1000;
             this.trackBar8.Scroll += new System.EventHandler(this.TrackBar8_Scroll);
             // 
             // label23

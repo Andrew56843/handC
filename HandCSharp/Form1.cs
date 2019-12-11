@@ -987,24 +987,27 @@ namespace HandCSharp
                     else if (itog <= 3000 && itog > 2000)
                     {
                         if (finalTimeEngines[i] < 450) {finalTimeEngines[i] += 60;}//удерживаем скорость 450
-                        else{finalTimeEngines[i] -= 50;}                        
+                        else if (finalTimeEngines[i] == 450) { }
+                        else {finalTimeEngines[i] -= 50;}                        
                         //if (finalTimeEngines[i] < 200) {finalTimeEngines[i] += 40;}
                     }
                     else if (itog <= 2000 && itog > 1000)
                     {
                         if (finalTimeEngines[i] < 400) { finalTimeEngines[i] += 50;}//удерживаем скорость 400
-                        else{finalTimeEngines[i] -= 40;}
+                        else if (finalTimeEngines[i] == 400) { }
+                        else {finalTimeEngines[i] -= 40;}
                         
                         //if (finalTimeEngines[i] < 100) { finalTimeEngines[i] += 20; }
                     }                    
                     else if (itog <= 1000 && itog > 200)
                     {
                         if (finalTimeEngines[i] < 300) { finalTimeEngines[i] += 30; }//удерживаем скорость 300
+                        else if (finalTimeEngines[i] == 300) { }
                         else { finalTimeEngines[i] -= 30; }
                     }
                     else
                     {
-                        finalTimeEngines[i] = 100;
+                        finalTimeEngines[i] = 150;
                     }
                     if (finalTimeEngines[i] < 50) { finalTimeEngines[i] = 50; }
                     //if (itog < finalTimeEngines[i]) { finalTimeEngines[i] = itog - 10; }
@@ -1088,9 +1091,9 @@ namespace HandCSharp
                 int newPosX = e.X - 10;
                 int newPosY = e.Y - 10;
                 if(newPosX < 0) { newPosX = 0; }
-                if (newPosX > 200) { newPosX = 200; }
+                if (newPosX > 199) { newPosX = 199; }
                 if (newPosY < 0) { newPosY = 0; }
-                if (newPosY > 200) { newPosY = 200; }
+                if (newPosY > 199) { newPosY = 199; }
 
                 label19.Text = newPosX.ToString();
                 label20.Text = newPosY.ToString();
@@ -1255,12 +1258,16 @@ namespace HandCSharp
 
         private void Button11_Click(object sender, EventArgs e)
         {
-            for (int i = 16; i <= 25; i++)
+            int[] time = { 16, 17, 18,19 };
+           
+            robot.GROUP_STOP(robot.group_setVal(time));
+
+            /*for (int i = 16; i <= 25; i++)
             {                
                 robot.MOT_TIME(i, 10); 
                 robot.MOT_TPOS(i, robot.GET_MOT_POS(i)); Thread.Sleep(100);
                 robot.MOT_CMD(i, 7);
-            }
+            }*/
         }
 
         private void PictureBox2_Click(object sender, EventArgs e)
