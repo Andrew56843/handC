@@ -14,7 +14,10 @@ using System.Timers;
 using System.IO;
 using System.Windows.Forms;
 
+
 using AR600_NS;
+
+using Microsoft.Speech.Recognition;
 
 namespace HandCSharp
 {
@@ -49,8 +52,44 @@ namespace HandCSharp
             }
             InitializeComponent();
             
-        }        
-        
+        }
+
+        static Label lol;
+
+        static void sre_SpeechRecognized(object sender, SpeechRecognizedEventArgs e)
+        {
+            if (e.Result.Confidence > 0.7) lol.Text = e.Result.Text;
+        }
+
+        private void Form1_Shown_1(object sender, EventArgs e)
+        {
+            lol = label27;
+
+            System.Globalization.CultureInfo ci = new System.Globalization.CultureInfo("ru-ru");
+            SpeechRecognitionEngine sre = new SpeechRecognitionEngine(ci);
+            sre.SetInputToDefaultAudioDevice();
+
+            sre.SpeechRecognized += new EventHandler<SpeechRecognizedEventArgs>(sre_SpeechRecognized);
+
+
+            Choices numbers = new Choices();
+            numbers.Add(new string[] { "один", "два", "три", "четыре", "пять", "хелло", "кинь мяч" });
+
+
+            GrammarBuilder gb = new GrammarBuilder();
+            gb.Culture = ci;
+            gb.Append(numbers);
+
+
+            Grammar g = new Grammar(gb);
+            sre.LoadGrammar(g);
+
+            sre.RecognizeAsync(RecognizeMode.Multiple);
+        }
+
+
+
+
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -1355,7 +1394,7 @@ namespace HandCSharp
             posEngineser[3] -= 100;
             posEngineser[4] -= 100;
             MainEngine(idEngineser, posEngineser);
-        }
+        }        
 
         private void button9_Click(object sender, EventArgs e)
         {
