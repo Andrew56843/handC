@@ -44,6 +44,7 @@
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.trackBar1 = new System.Windows.Forms.TrackBar();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button11 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -109,7 +110,6 @@
             this.label32 = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
-            this.button11 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -269,6 +269,16 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Запрограммированные движения";
             this.groupBox1.Enter += new System.EventHandler(this.GroupBox1_Enter);
+            // 
+            // button11
+            // 
+            this.button11.Location = new System.Drawing.Point(208, 283);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(167, 46);
+            this.button11.TabIndex = 82;
+            this.button11.Text = "Мяч";
+            this.button11.UseVisualStyleBackColor = true;
+            this.button11.Click += new System.EventHandler(this.Button11_Click_1);
             // 
             // button5
             // 
@@ -439,7 +449,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(466, 340);
+            this.label11.Location = new System.Drawing.Point(305, 394);
             this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(82, 25);
@@ -463,7 +473,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(342, 340);
+            this.label10.Location = new System.Drawing.Point(386, 340);
             this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(82, 25);
@@ -971,16 +981,6 @@
             this.button10.Text = "Micro OFF";
             this.button10.UseVisualStyleBackColor = true;
             this.button10.Click += new System.EventHandler(this.Button10_Click_1);
-            // 
-            // button11
-            // 
-            this.button11.Location = new System.Drawing.Point(208, 283);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(167, 46);
-            this.button11.TabIndex = 82;
-            this.button11.Text = "Мяч";
-            this.button11.UseVisualStyleBackColor = true;
-            this.button11.Click += new System.EventHandler(this.Button11_Click_1);
             // 
             // Form1
             // 

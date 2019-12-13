@@ -91,7 +91,7 @@ namespace HandCSharp
                         movgb = 0;
                     }
                 }
-                if (e.Result.Text == "пока" || e.Result.Text == "до свидания")
+                if (e.Result.Text == "до свидания")
                 {
                     if (e.Result.Confidence > 0.79)
                     {
@@ -99,7 +99,7 @@ namespace HandCSharp
                         movgb = 0;
                     }
                 }
-                if (e.Result.Text == "кинь мяч")
+                if (e.Result.Text == "возьми мяч")
                 {
                     if (e.Result.Confidence > 0.79)
                     {
@@ -123,7 +123,7 @@ namespace HandCSharp
 
 
             Choices numbers = new Choices();
-            numbers.Add(new string[] { "привет", "здравствуй", "здравствуйте", "пока", "до свидания", "кинь мяч" });
+            numbers.Add(new string[] { "привет", "здравствуй", "здравствуйте","до свидания", "возьми мяч" });
 
 
             GrammarBuilder gb = new GrammarBuilder();
@@ -361,7 +361,7 @@ namespace HandCSharp
 
         void ball()
         {
-            if (movgb == 0)//возьми мяч
+            if (movgb >= 0 && movgb < 20)//возьми мяч
             {
                 movgb++;
             }
@@ -375,7 +375,7 @@ namespace HandCSharp
                 robot.GROUP_TPOS(robot.group_setVal(pos));
                 robot.GROUP_GO(robot.group_setVal(go));
             }
-            if ((robot.RH_DIST2 > 17300) && movgb == 21)//сожми мяч
+            if ((robot.RH_DIST2 > 17300) && movgb >= 21 && movgb < 40)//сожми мяч
             {
                 movgb++;
             }
@@ -390,7 +390,7 @@ namespace HandCSharp
                 robot.GROUP_GO(robot.group_setVal(go));
             }
 
-            if (Math.Abs(robot.GET_MOT_POS(25)) > 1000 && movgb == 41)//исходное положение (1000 мб поменять)
+            if (Math.Abs(robot.GET_MOT_POS(25)) > 1000 && movgb >= 41 && movgb < 60)//исходное положение (1000 мб поменять)
             {
                 movgb++;
             }
@@ -404,7 +404,7 @@ namespace HandCSharp
                 robot.GROUP_TPOS(robot.group_setVal(pos));
                 robot.GROUP_GO(robot.group_setVal(go));
             }
-            if (Math.Abs(robot.GET_MOT_POS(16)) < 1400 && movgb == 61)//кинь мяч
+            if (Math.Abs(robot.GET_MOT_POS(16)) < 1400 && movgb >= 61 && movgb < 80)//кинь мяч
             {
                 movgb++;
             }
@@ -419,7 +419,7 @@ namespace HandCSharp
                 robot.GROUP_GO(robot.group_setVal(go));
                 //robot.GROUP_PTB(robot.group_setVal(pos));
             }
-            if (Math.Abs(robot.GET_MOT_POS(16)) > 3200 && movgb == 81)//кинь мяч
+            if (Math.Abs(robot.GET_MOT_POS(16)) > 3200 && movgb >= 81 && movgb < 100)//кинь мяч
             {
                 movgb++;
             }
@@ -427,11 +427,11 @@ namespace HandCSharp
         }
         int hsr = 0;  // 0 - вход, 1 - движение в исходную, 2 - изходная       
         void hs2()
-        {            
-            if ((hsr > 3) && (robot.RH_DIST2 < 17300))
-                hsr = 0;
+        {
+            if ((movgb > 3) && (robot.RH_DIST2 < 17300))
+                movgb = 0;
 
-            if (hsr == 0)
+            if (movgb == 0)
             {
                 int[] time = { 16, 100, 17, 100, 18, 100, 19, 100, 20, 100, 21, 100, 22, 100, 23, 100, 24, 100, 25, 100 };
                 int[] pos = { 16, 4500, 17, 0, 18, 0, 19, 0, 20, 0, 21, 0, 22, 0, 23, 0, 24, 0, 25, 0 };
@@ -440,15 +440,15 @@ namespace HandCSharp
                 robot.GROUP_TPOS(robot.group_setVal(pos));
                 robot.GROUP_GO(robot.group_setVal(go));
 
-                hsr = 1;
+                movgb = 1;
             }
 
-            if ((hsr == 1) && (waitMot(16, 4500) < 150) && (waitMot(19, 0) < 150))
+            if ((movgb == 1) && (waitMot(16, 4500) < 150) && (waitMot(19, 0) < 150))
             {
-                hsr = 2;
+                movgb = 2;
             }
 
-            if ((hsr == 2) && (robot.RH_DIST2 > 17300))
+            if ((movgb == 2) && (robot.RH_DIST2 > 17300))
             {
                 int[] time = { 21, 100, 22, 100, 23, 100, 24, 100, 25, 100 };
                 int[] pos = { 21, 7500, 22, 7500, 23, 7500, 24, 7500, 25, 7500 };
@@ -456,10 +456,10 @@ namespace HandCSharp
                 robot.GROUP_TIME(robot.group_setVal(time));
                 robot.GROUP_TPOS(robot.group_setVal(pos));
                 robot.GROUP_GO(robot.group_setVal(go));
-                hsr = 3;
+                movgb = 3;
             }
             int tmhs = 100;
-            if ((hsr == 3) && (waitMot(21, 7000) < 200))
+            if ((movgb == 3) && (waitMot(21, 7000) < 200))
             {
                 int[] time = { 16, tmhs, 19, tmhs };
                 int[] pos = { 16, 3000, 19, 1000 };
@@ -468,9 +468,9 @@ namespace HandCSharp
                 robot.GROUP_TPOS(robot.group_setVal(pos));
                 robot.GROUP_GO(robot.group_setVal(go));
 
-                hsr = 4;
+                movgb = 4;
             }
-            if ((hsr == 4) && (waitMot(16,3000) < 400))
+            if ((movgb == 4) && (waitMot(16,3000) < 400))
             {
                 int[] time = { 16, tmhs, 19, tmhs };
                 int[] pos = { 16, 7000, 19, -500 };
@@ -479,10 +479,10 @@ namespace HandCSharp
                 robot.GROUP_TPOS(robot.group_setVal(pos));
                 robot.GROUP_GO(robot.group_setVal(go));
 
-                hsr = 5;
+                movgb = 5;
             }
 
-            if ((hsr == 5) && (waitMot(16, 7000) < 400))
+            if ((movgb == 5) && (waitMot(16, 7000) < 400))
             {
                 int[] time = { 16, tmhs, 19, tmhs };
                 int[] pos = { 16, 3000, 19, 1000 };
@@ -491,9 +491,9 @@ namespace HandCSharp
                 robot.GROUP_TPOS(robot.group_setVal(pos));
                 robot.GROUP_GO(robot.group_setVal(go));
 
-                hsr = 6;
+                movgb = 6;
             }
-            if ((hsr == 6) && (waitMot(16, 3000) < 400))
+            if ((movgb == 6) && (waitMot(16, 3000) < 400))
             {
                 int[] time = { 16, tmhs, 19, tmhs };
                 int[] pos = { 16, 7000, 19, -500 };
@@ -502,10 +502,10 @@ namespace HandCSharp
                 robot.GROUP_TPOS(robot.group_setVal(pos));
                 robot.GROUP_GO(robot.group_setVal(go));
 
-                hsr = 7;
+                movgb = 7;
             }
 
-            if ((hsr == 7) && (waitMot(16, 7000) < 400))
+            if ((movgb == 7) && (waitMot(16, 7000) < 400))
             {
                 int[] time = { 16, tmhs, 19, tmhs };
                 int[] pos = { 16, 4500, 19, 0 };
@@ -514,10 +514,10 @@ namespace HandCSharp
                 robot.GROUP_TPOS(robot.group_setVal(pos));
                 robot.GROUP_GO(robot.group_setVal(go));
 
-                hsr = 8;
+                movgb = 8;
             }
 
-            if ((hsr == 8) && (waitMot(16, 4500) < 100))
+            if ((movgb == 8) && (waitMot(16, 4500) < 100))
             {
                 int[] time = { 21, 100, 22, 100, 23, 100, 24, 100, 25, 100 };
                 int[] pos = { 21, 0, 22, 0, 23, 0, 24, 0, 25, 0 };
@@ -525,11 +525,11 @@ namespace HandCSharp
                 robot.GROUP_TIME(robot.group_setVal(time));
                 robot.GROUP_TPOS(robot.group_setVal(pos));
                 robot.GROUP_GO(robot.group_setVal(go));
-                hsr = 9;
+                movgb = 9;
             }
-            if ((hsr == 9) && (waitMot(21, 0) < 100))
+            if ((movgb == 9) && (waitMot(21, 0) < 100))
             {
-                hsr = 0;
+                movgb = 0;
             }
 
         }
@@ -1591,6 +1591,7 @@ namespace HandCSharp
 
         private void button9_Click(object sender, EventArgs e)
         {
+            regime = 0; movgb = 0;
             for (int i = 16; i <= 25; i++)
                robot.MOT_CMD(i, 2); Thread.Sleep(100);
 
