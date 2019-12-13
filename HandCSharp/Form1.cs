@@ -33,7 +33,8 @@ namespace HandCSharp
         _AR600 robot = new _AR600();
         int numMot = 23;
         bool trace = false;
-
+        bool mainmicro = true;
+        int regime = 0;
 
         int[] positionEngines = new int[30];//num engines = andValue
         int[] finalAimEngines = new int[30];//num engines = andValue
@@ -56,13 +57,62 @@ namespace HandCSharp
 
         static Label lol;
 
-        static void sre_SpeechRecognized(object sender, SpeechRecognizedEventArgs e)
+        int Saying = 0;           
+        private void Timer4_Tick(object sender, EventArgs e)
         {
-            if (e.Result.Confidence > 0.7) lol.Text = e.Result.Text;
-        }
+            if(Saying == 0)
+            {
+                StartAudio();
+            }
+            else
+            {
+                Saying = 0;
+            }
+            label28.Text = "16: " + robot.GET_MOT_POS(16).ToString();
+            label29.Text = "17: " + robot.GET_MOT_POS(17).ToString();
+            label30.Text = "18: " + robot.GET_MOT_POS(18).ToString();
+            label31.Text = "19: " + robot.GET_MOT_POS(19).ToString();
+            label32.Text = "20: " + robot.GET_MOT_POS(20).ToString();
 
-        private void Form1_Shown_1(object sender, EventArgs e)
+        }
+        
+        private void sre_SpeechRecognized(object sender, SpeechRecognizedEventArgs e)
         {
+            Saying++;
+            if (mainmicro == true)
+            {
+                if (e.Result.Confidence > 0.79) lol.Text = e.Result.Text;
+
+                if (e.Result.Text == "привет" || e.Result.Text == "здравствуй" || e.Result.Text == "здравствуйте")
+                {
+                    if (e.Result.Confidence > 0.79)
+                    {
+                        regime = 2;
+                        movgb = 0;
+                    }
+                }
+                if (e.Result.Text == "пока" || e.Result.Text == "до свидания")
+                {
+                    if (e.Result.Confidence > 0.79)
+                    {
+                        regime = 3;
+                        movgb = 0;
+                    }
+                }
+                if (e.Result.Text == "кинь мяч")
+                {
+                    if (e.Result.Confidence > 0.79)
+                    {
+                        regime = 5;
+                        movgb = 0;
+                    }
+                }
+            }
+            return;
+        }        
+        private void StartAudio()
+        {
+            Saying = 1;
             lol = label27;
 
             System.Globalization.CultureInfo ci = new System.Globalization.CultureInfo("ru-ru");
@@ -73,20 +123,18 @@ namespace HandCSharp
 
 
             Choices numbers = new Choices();
-            numbers.Add(new string[] { "один", "два", "три", "четыре", "пять", "хелло", "кинь мяч" });
+            numbers.Add(new string[] { "привет", "здравствуй", "здравствуйте", "пока", "до свидания", "кинь мяч" });
 
 
             GrammarBuilder gb = new GrammarBuilder();
             gb.Culture = ci;
             gb.Append(numbers);
 
-
             Grammar g = new Grammar(gb);
             sre.LoadGrammar(g);
-
-            sre.RecognizeAsync(RecognizeMode.Multiple);
+            sre.RecognizeAsync(RecognizeMode.Multiple);//
+            //             
         }
-
 
 
 
@@ -311,7 +359,72 @@ namespace HandCSharp
             }
         }
 
+        void ball()
+        {
+            if (movgb == 0)//возьми мяч
+            {
+                movgb++;
+            }
+            if (movgb == 20)
+            {
+                movgb = 21;
+                int[] time = { 16, 300, 17, 300, 18, 300, 19, 300, 20, 300, 21, 300, 22, 300, 23, 300, 24, 300, 25, 300 };
+                int[] pos = { 16, 4130, 17, 158, 18, -140, 19, 4174, 20, -9350, 21, -100, 22, -100, 23, -100, 24, -100, 25, -100 };
+                int[] go = { 16, 0, 17, 0, 18, 0, 19, 0, 20, 0, 21, 0, 22, 0, 23, 0, 24, 0, 25, 0 };
+                robot.GROUP_TIME(robot.group_setVal(time));
+                robot.GROUP_TPOS(robot.group_setVal(pos));
+                robot.GROUP_GO(robot.group_setVal(go));
+            }
+            if ((robot.RH_DIST2 > 17300) && movgb == 21)//сожми мяч
+            {
+                movgb++;
+            }
+            if (movgb == 40)
+            {
+                movgb = 41;
+                int[] time = { 16, 100, 17, 100, 18, 100, 19, 100, 20, 100, 21, 100, 22, 100, 23, 100, 24, 100, 25, 100 };
+                int[] pos = { 16, 4130, 17, 158, 18, -140, 19, 4174, 20, -9350, 21, 6600, 22, -100, 23, 8500, 24, 6800, 25, 6200 };
+                int[] go = { 16, 0, 17, 0, 18, 0, 19, 0, 20, 0, 21, 0, 22, 0, 23, 0, 24, 0, 25, 0 };
+                robot.GROUP_TIME(robot.group_setVal(time));
+                robot.GROUP_TPOS(robot.group_setVal(pos));
+                robot.GROUP_GO(robot.group_setVal(go));
+            }
 
+            if (Math.Abs(robot.GET_MOT_POS(25)) > 1000 && movgb == 41)//исходное положение (1000 мб поменять)
+            {
+                movgb++;
+            }
+            if (movgb == 60)
+            {
+                movgb = 61;
+                int[] time = { 16, 300, 17, 300, 18, 300, 19, 300, 20, 300, 21, 300, 22, 300, 23, 300, 24, 300, 25, 300 };
+                int[] pos = { 16, 1344, 17, 2979, 18, 8024, 19, 7200, 20, -9350, 21, 6600, 22, -100, 23, 8500, 24, 6800, 25, 6200 };
+                int[] go = { 16, 0, 17, 0, 18, 0, 19, 0, 20, 0, 21, 0, 22, 0, 23, 0, 24, 0, 25, 0 };
+                robot.GROUP_TIME(robot.group_setVal(time));
+                robot.GROUP_TPOS(robot.group_setVal(pos));
+                robot.GROUP_GO(robot.group_setVal(go));
+            }
+            if (Math.Abs(robot.GET_MOT_POS(16)) < 1400 && movgb == 61)//кинь мяч
+            {
+                movgb++;
+            }
+            if (movgb == 80)
+            {
+                movgb = 81;
+                int[] time = { 16, 50, 17, 50, 18, 50, 19, 50, 20, 50, 21, 50, 22, 50, 23, 50, 24, 50, 25, 50 };
+                int[] pos = { 16, 3300, 17, 2100, 18, 1450, 19, 5950, 20, 1885, 21, -100, 22, -100, 23, -100, 24, -100, 25, 4000 };
+                int[] go = { 16, 0, 17, 0, 18, 0, 19, 0, 20, 0, 21, 0, 22, 0, 23, 0, 24, 0, 25, 0 };
+                robot.GROUP_TIME(robot.group_setVal(time));
+                robot.GROUP_TPOS(robot.group_setVal(pos));
+                robot.GROUP_GO(robot.group_setVal(go));
+                //robot.GROUP_PTB(robot.group_setVal(pos));
+            }
+            if (Math.Abs(robot.GET_MOT_POS(16)) > 3200 && movgb == 81)//кинь мяч
+            {
+                movgb++;
+            }
+            if (movgb == 100) { movgb = 0; }
+        }
         int hsr = 0;  // 0 - вход, 1 - движение в исходную, 2 - изходная       
         void hs2()
         {            
@@ -528,6 +641,9 @@ namespace HandCSharp
                     break;
                 case 4:
                     
+                    break;
+                case 5:
+                    ball();
                     break;
             }            
             return;            
@@ -822,7 +938,7 @@ namespace HandCSharp
         }
 
 
-        int regime = 0;
+        
 
         private void button3_Click(object sender, EventArgs e)
         {
@@ -1297,10 +1413,10 @@ namespace HandCSharp
 
         private void Button11_Click(object sender, EventArgs e)
         {
-            int[] time = { 16, 17, 18,19 };
-           
-            robot.GROUP_STOP(robot.group_setVal(time));
+            //int[] time = { 16, 17, 18,19 };
 
+            //robot.GROUP_STOP(robot.group_setVal(time));
+            StartAudio();
             /*for (int i = 16; i <= 25; i++)
             {                
                 robot.MOT_TIME(i, 10); 
@@ -1394,7 +1510,84 @@ namespace HandCSharp
             posEngineser[3] -= 100;
             posEngineser[4] -= 100;
             MainEngine(idEngineser, posEngineser);
-        }        
+        }
+
+        private void GroupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        bool bisibleall = false;
+        private void Button4_Click_2(object sender, EventArgs e)
+        {
+            if (bisibleall == true)
+            {
+                bisibleall = false;
+                groupBox3.Visible = false;
+                label8.Visible = false;
+                label9.Visible = false;
+                label11.Visible = false;
+                label12.Visible = false;
+                label10.Visible = false;
+                trackBar2.Visible = false;
+                groupBox2.Visible = false;
+                groupBox5.Visible = false;
+                label20.Visible = false;
+                label22.Visible = false;
+                groupBox4.Visible = false;
+                label21.Visible = false;
+                label19.Visible = false;
+                trackBar8.Visible = false;
+                label23.Visible = false;
+                label24.Visible = false;
+                label25.Visible = false;
+                label26.Visible = false;
+                label27.Visible = false;
+                label28.Visible = false;
+                label29.Visible = false;
+                label30.Visible = false;
+                label31.Visible = false;
+                label32.Visible = false;
+            } else {
+                bisibleall = true;
+                groupBox3.Visible = true;
+                label8.Visible = true;
+                label9.Visible = true;
+                label11.Visible = true;
+                label12.Visible = true;
+                label10.Visible = true;
+                trackBar2.Visible = true;
+                groupBox2.Visible = true;
+                groupBox5.Visible = true;
+                label20.Visible = true;
+                label22.Visible = true;
+                groupBox4.Visible = true;
+                label21.Visible = true;
+                label19.Visible = true;
+                trackBar8.Visible = true;
+                label23.Visible = true;
+                label24.Visible = true;
+                label25.Visible = true;
+                label26.Visible = true;
+                label27.Visible = true;
+                label28.Visible = true;
+                label29.Visible = true;
+                label30.Visible = true;
+                label31.Visible = true;
+                label32.Visible = true;
+            }
+        }
+
+        private void Button11_Click_1(object sender, EventArgs e)
+        {
+            regime = 5; movgb = 0;          
+        }
+
+        private void Button10_Click_1(object sender, EventArgs e)
+        {
+            mainmicro = !mainmicro;
+            if(mainmicro == true) { button10.Text = "Micro OFF"; } else { button10.Text = "Micro ON"; }
+        }
 
         private void button9_Click(object sender, EventArgs e)
         {
@@ -1402,11 +1595,5 @@ namespace HandCSharp
                robot.MOT_CMD(i, 2); Thread.Sleep(100);
 
         }
-
-
     }
-
-
-
-
 }

@@ -62,3 +62,4 @@ C:\Users\nect1\Source\Repository\Andrew56843\handC\HandCSharp\obj\Debug\HandCSha
 C:\Users\nect1\Source\Repository\Andrew56843\handC\HandCSharp\obj\Debug\HandCSharp.exe
 C:\Users\nect1\Source\Repository\Andrew56843\handC\HandCSharp\obj\Debug\HandCSharp.pdb
 C:\Users\nect1\Source\Repository\Andrew56843\handC\HandCSharp\bin\Debug\Microsoft.Speech.dll
+C:\Users\nect1\Source\Repos\Andrew56843\handC\HandCSharp\bin\Debug\Microsoft.Speech.dll
